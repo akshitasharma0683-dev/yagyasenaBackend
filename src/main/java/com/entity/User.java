@@ -29,8 +29,10 @@ public class User{
     private List<Contact> contacts = new ArrayList<> ();
 
     @OneToMany(mappedBy ="userID", fetch  = FetchType.LAZY)
-    private List<Journal>  Journals = new ArrayList();
+    private List<Journal>  journals = new ArrayList<>();
 
+    @OneToMany(mappedBy="user" , fetch = FetchType.LAZY)
+    private List<Journey> journeys = new ArrayList<>();
 
     public User(){
         
