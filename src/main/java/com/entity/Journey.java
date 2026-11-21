@@ -32,6 +32,9 @@ public class Journey {
 
     @OneToMany(mappedBy = "journey", fetch = FetchType.LAZY) 
     private List<Location> location = new ArrayList<>(); 
+    @OneToMany(mappedBy = "jID", fetch = FetchType.LAZY) 
+
+    private List<SOS> sos = new ArrayList<>();
 
    public  Journey(){
 
