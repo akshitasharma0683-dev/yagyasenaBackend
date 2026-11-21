@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -22,15 +22,15 @@ public class Journey {
     @GeneratedValue (strategy = GenerationType.UUID)
     private UUID journeyID;
     @ManyToOne 
-    @JoinColumn (name = "user")
-    private User user;
+    @JoinColumn (name = "user_id")
+    private User user_id;
     private String destination;
     private LocalDateTime starttime;
     private LocalDateTime endtime;
     @Enumerated (EnumType.STRING)
     private JourneyStatus jstatus =JourneyStatus.ACTIVE;
 
-    @OneToMany(mappedBy = "journey", fetch = FetchType.LAZY) 
+    @OneToMany(mappedBy = "journey", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) 
     private List<Location> location = new ArrayList<>(); 
     @OneToMany(mappedBy = "jID", fetch = FetchType.LAZY) 
 
@@ -40,19 +40,19 @@ public class Journey {
 
     }
 
-    public Journey(User user, String destination, LocalDateTime starttime, LocalDateTime endtime){
-        this.user= user;
+    public Journey(User user_id, String destination, LocalDateTime starttime, LocalDateTime endtime){
+        this.user_id= user_id;
         this.destination=destination;
         this.starttime=starttime;
         this.endtime=endtime;
     }
 
     public User getUser(){
-        return user;
+        return user_id;
     }
 
-    public void setUser(User user){
-        this.user=user;
+    public void setUser(User user_id){
+        this.user_id=user_id;
     }
 
     public String getDestination(){

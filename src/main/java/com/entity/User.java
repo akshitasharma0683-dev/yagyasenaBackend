@@ -4,6 +4,7 @@ package com.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -11,8 +12,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "app_users")
+
 public class User{
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,15 +29,15 @@ public class User{
     @Column (nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "userID" , fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "userID" , fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Contact> contacts = new ArrayList<> ();
 
-    @OneToMany(mappedBy ="userID", fetch  = FetchType.LAZY)
+    @OneToMany(mappedBy ="userID", fetch  = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Journal>  journals = new ArrayList<>();
 
-    @OneToMany(mappedBy="user" , fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="user_id" , fetch = FetchType.LAZY,  cascade = CascadeType.REMOVE)
     private List<Journey> journeys = new ArrayList<>();
-    @OneToMany(mappedBy="userid" , fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="userid" , fetch = FetchType.LAZY,  cascade = CascadeType.REMOVE)
 
     private List<SOS> sos = new ArrayList<>();
 
