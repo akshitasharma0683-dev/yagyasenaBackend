@@ -33,8 +33,9 @@ public class User{
 
     @OneToMany(mappedBy="user" , fetch = FetchType.LAZY)
     private List<Journey> journeys = new ArrayList<>();
+    @OneToMany(mappedBy="userid" , fetch = FetchType.LAZY)
 
-    
+    private List<SOS> sos = new ArrayList<>();
 
     public User(){
         
