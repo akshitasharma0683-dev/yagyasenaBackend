@@ -43,10 +43,18 @@ public class UserServiceImpl implements UserService{
             () -> new RuntimeException("user not found")
         );
 
+        if (user.getUserName()!= null ) {        
+        
         dbUser.setUserName(user.getUserName());
-        dbUser.setPassword(user.getPassword());
-        dbUser.setEmail(user.getEmail());
+        }
+        if(user.getPassword()!=null){
 
+        dbUser.setPassword(user.getPassword());
+        }
+        if(user.getEmail()!=null){
+        dbUser.setEmail(user.getEmail());
+        }
+        
         return userrepo.save(dbUser);
       
     }
