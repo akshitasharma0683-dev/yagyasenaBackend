@@ -8,8 +8,8 @@ import com.entity.User;
 public interface UserService {
 
        User saveUser(User user);
-        public Optional<User> getUser(User user, Long id);
-      void deleteUserById(User user, Long id);
+        public Optional<User> getUser( Long id);
+      void deleteUserById( Long id);
       User updateUser(User user, Long id);
       List<User> getAllUser();
 

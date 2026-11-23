@@ -22,13 +22,17 @@ public class UserServiceImpl implements UserService{
 
     }
 
-    public Optional<User> getUser(User user, Long id){
+    public Optional<User> getUser( Long id){
         return  userrepo.findById(id);
 
     }
 
-    public void deleteUserById(User user, Long id){
-         userrepo.deleteById(id);
+    public void deleteUserById( Long id){
+         Optional<User> existingUser  = getUser( id);
+         User dbUser = existingUser.orElseThrow(
+            () -> new RuntimeException("user does not exist")
+         );
+         userrepo.deleteById(dbUser.getUserID());
     }
 
     public List<User> getAllUser(){
@@ -37,7 +41,7 @@ public class UserServiceImpl implements UserService{
     }
 
     public User updateUser(User user, Long id){
-        Optional<User> existingUser  = getUser(user, id);
+        Optional<User> existingUser  = getUser( id);
 
        User dbUser= existingUser.orElseThrow(
             () -> new RuntimeException("user not found")
