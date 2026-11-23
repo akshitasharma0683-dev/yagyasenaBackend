@@ -1,9 +1,9 @@
-package com.service;
+package com.yagyasena.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.entity.User;
+import com.yagyasena.entity.User;
 
 public interface UserService {
 

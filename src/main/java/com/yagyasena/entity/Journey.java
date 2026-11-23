@@ -1,4 +1,4 @@
-package com.entity;
+package com.yagyasena.entity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

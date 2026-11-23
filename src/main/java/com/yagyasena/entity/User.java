@@ -1,4 +1,4 @@
-package com.entity;
+package com.yagyasena.entity;
 
 
 import java.util.ArrayList;

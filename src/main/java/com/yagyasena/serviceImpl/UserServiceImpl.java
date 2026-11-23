@@ -1,12 +1,12 @@
-package com.serviceImpl;
+package com.yagyasena.serviceImpl;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.entity.User;
-import com.repository.UserRepo;
-import com.service.*;
+import com.yagyasena.entity.User;
+import com.yagyasena.repository.UserRepo;
+import com.yagyasena.service.*;
 @Service 
 public class UserServiceImpl implements UserService{
 
